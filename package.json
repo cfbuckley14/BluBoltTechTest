@@ -7,11 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve:1": "live-server moduleOneBasics/",
     "compile:1": "node-sass -rw moduleOneBasics/index.scss -o moduleOneBasics",
-    "dev:1":"npm-run-all -p serve:1 compile:1",
+    "dev:1": "npm-run-all -p serve:1 compile:1",
     "serve:2": "live-server moduleTwoJSAndPrimatives/",
     "compile:2": "node-sass -rw moduleTwoJSAndPrimatives/index.scss -o moduleTwoJSAndPrimatives",
-    "dev:2":"npm-run-all -p serve:2 compile:2",
-    
+    "dev:2": "npm-run-all -p serve:2 compile:2",
     "dev:react": "cd moduleThreeReact/  && yarn start"
   },
   "repository": {
