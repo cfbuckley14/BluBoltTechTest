@@ -43,6 +43,14 @@ console.log({baseData, addOnData})
  * Your Event listeners and Loggers should be added below
  */
 
+const reversedData = baseData.slice().reverse()
+const removeFirstItemOfData = baseData.slice()
+const firstItemOfData = removeFirstItemOfData.shift()
+const addOnDataArray = [addOnData]
+const addDataToFrontOfBaseData = addOnDataArray.concat(baseData)
+const baseDataCopy = baseData.slice()
+const removedItemOfData = baseDataCopy.splice(2, 1, addOnData)
+
 function consoleLogOnButtonClick(button, data) {
   document.querySelector(button).addEventListener('click', () => {
     console.log(data)
@@ -58,13 +66,33 @@ function consoleLogIndividualItemsOnButtonClick(button) {
   })
 }
 
-const reversedData = baseData.slice().reverse()
-const removeFirstItemOfData = baseData.slice()
-const firstItemOfData = removeFirstItemOfData.shift()
-const addOnDataArray = [addOnData]
-const addDataToFrontOfBaseData = addOnDataArray.concat(baseData)
-const baseDataCopy = baseData.slice()
-const removedItemOfData = baseDataCopy.splice(2, 1, addOnData)
+function consoleLogWordCount(button) {
+  const paragraph = document.querySelector('#stringText')
+  const newArray = paragraph.innerHTML.toString().split(" ")
+  let foxOccurrenceCount = newArray.filter((word) => {
+    return word === 'fox';
+  })
+  document.querySelector(button).addEventListener('click', () => {
+    console.log(foxOccurrenceCount.length)
+  })
+}
+
+function consoleLogReverseWordsInParagraph(button) {
+  const paragraph = document.querySelector('#stringText')
+  const newArray = paragraph.innerHTML.toString().split("")
+  const reversedWords = newArray.reverse().join("")
+  document.querySelector(button).addEventListener('click', () => {
+    console.log(reversedWords)
+  })
+}
+
+function replaceWords(button) {
+  const paragraph = document.querySelector('#stringText').innerHTML.toString()
+  const newParagraph = paragraph.replace('brown', 'sandy')
+  document.querySelector(button).addEventListener('click', () => {
+    console.log(newParagraph)
+  })
+}
 
 consoleLogOnButtonClick('#base-data-button', baseData)
 consoleLogOnButtonClick('#data-reverse-button', reversedData)
@@ -73,13 +101,7 @@ consoleLogIndividualItemsOnButtonClick('#individual-entries-button')
 consoleLogOnButtonClick('#add-on-data-to-base-data-button', addDataToFrontOfBaseData)
 consoleLogOnButtonClick('#replace-object-button', baseDataCopy)
 
-// const paragraph = document.querySelector('#stringText')
-// const newArray = paragraph.innerHTML.toString().split(" ")
-//
-// let foxOccurrenceCount = newArray.filter((word) => {
-//   return word === 'fox';
-// })
-//
-// document.querySelector("#log-fox-occurrence-button").addEventListener('click', () => {
-//   console.log(foxOccurrenceCount.length)
-// })
+consoleLogWordCount("#log-fox-occurrence-button")
+consoleLogReverseWordsInParagraph('#reverse-words-button')
+replaceWords('#replace-words-button')
+
